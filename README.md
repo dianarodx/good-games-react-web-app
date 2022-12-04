@@ -1,3 +1,17 @@
+# Development Notes
+
+## CSS
+
+### Color constants
+
+Green: #7FB069
+
+Black: css black (#000000)
+
+Blue: #9AA8EF
+
+Beige: #F5F5F5
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

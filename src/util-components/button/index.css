@@ -1,0 +1,34 @@
+.base-btn-style {
+    cursor: pointer;
+}
+
+.md {
+    font-size: 16px;
+    padding: 8px 48px;
+    border-radius: 16px;
+    margin: 8px 0;
+}
+
+.sm {
+    font-size: 12px;
+    padding: 6px 36px;
+    border-radius: 12px;
+    margin: 6px 0;
+}
+
+.lg {
+    font-size: 20px;
+    padding: 10px 60px;
+    border-radius: 20px;
+    margin: 10px 0;
+}
+
+.primary {
+    background-color: #7FB069;
+    color: black;
+}
+
+.secondary {
+    background-color: #9AA8EF;
+    color: black;
+}
