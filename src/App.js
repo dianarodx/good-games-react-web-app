@@ -1,23 +1,36 @@
 import './App.css';
-import Button from "./util-components/button";
+import HomePage from "./home";
+import DetailsPage from "./details";
+import LoginPage from "./login";
+import OtherProfilePage from "./profile/otherProfile";
+import SearchPage from "./search";
+import PersonalProfilePage from "./profile/personalProfile";
+import {BrowserRouter} from "react-router-dom";
+import {Routes, Route} from "react-router";
+import NavBar from "./util-components/navBar";
 
 function App() {
   return (
-    <div className="App">
-        <h1>Demoing some buttons</h1>
-        <h1>Button Styling</h1>
-        <br/>
-        <Button>Primary Button</Button>
-        <br/>
-        <Button type={'secondary'}>Secondary Button</Button>
-        <h1>Button Sizes</h1>
-        <br/>
-        <Button size={'lg'}>Large Button</Button>
-        <br/>
-        <Button size={'md'}>Medium Button</Button>
-        <br/>
-        <Button size={'sm'}>Small Button</Button>
-    </div>
+      <BrowserRouter>
+          <NavBar/>
+          <div className="container">
+              <Routes>
+                  <Route path="/*"
+                         index
+                         element={<HomePage/>}/>
+                  <Route path="/login"
+                         element={<LoginPage/>}/>
+                  <Route path="/profile/:uid"
+                         element={<OtherProfilePage/>}/>
+                  <Route path="/profile"
+                         element={<PersonalProfilePage/>}/>
+                  <Route path="/search"
+                         element={<SearchPage/>}/>
+                  <Route path="/details/:did"
+                         element={<DetailsPage/>}/>
+              </Routes>
+          </div>
+      </BrowserRouter>
   );
 }
 
