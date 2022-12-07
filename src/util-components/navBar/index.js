@@ -7,7 +7,7 @@ const NavBar = () => {
     return (
         <div className="navbar">
             <ul className="nav-links">
-                <div className={'nav-link ' + (activeTab === '/Home' ? 'active' : '')}>
+                <div className={'nav-link ' + (activeTab === '/Home' || activeTab === '/' ? 'active' : '')}>
                     <Link to={'Home'}>Home</Link>
                 </div>
                 <div className={'nav-link ' + (activeTab === '/Search' ? 'active' : '')}>
