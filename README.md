@@ -12,6 +12,8 @@ Blue: #9AA8EF
 
 Beige: #F5F5F5
 
+Red (For errors): #d32f2f
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

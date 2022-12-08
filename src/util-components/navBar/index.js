@@ -1,9 +1,15 @@
 import {Link} from "react-router-dom";
 import './index.css'
 import {useLocation} from "react-router";
+import {useSelector} from "react-redux";
 
 const NavBar = () => {
     const activeTab = useLocation().pathname;
+    const {currentUser} = useSelector((state) => state.users)
+    const logout = () => {
+
+    }
+
     return (
         <div className="navbar">
             <ul className="nav-links">
@@ -16,9 +22,14 @@ const NavBar = () => {
                 <div className={'nav-link ' + (activeTab === '/Profile' ? 'active' : '')}>
                     <Link to={'Profile'}>My Profile</Link>
                 </div>
-                <div className={'nav-link ' + (activeTab === '/Login' ? 'active' : '')}>
-                    <Link to={'Login'}>Login</Link>
-                </div>
+                {currentUser ?
+                 <div className={'nav-link'} onClick={logout}>
+                     <Link to={'Home'}>Logout</Link>
+                 </div> :
+                 <div className={'nav-link ' + (activeTab === '/Login' ? 'active' : '')}>
+                     <Link to={'Login'}>Login</Link>
+                 </div>
+                }
             </ul>
         </div>
     )

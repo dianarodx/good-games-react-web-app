@@ -8,18 +8,18 @@ export const login = async (credentials) => {
     const response = await api.post(loginAPI, credentials)
     return response.data;
 }
-export const signup = async (username, password) => {
+export const signup = async (credentials) => {
     const signupAPI = `${API_BASE}/signup`
-    const response = await axios.post(signupAPI, username, password)
+    const response = await api.post(signupAPI, credentials)
     return response.data;
 }
 export const profile = async (userID) => {
     const profileAPI = `${API_BASE}/profile`
-    const response = await axios.post(profileAPI, userID)
+    const response = await api.post(profileAPI, userID)
     return response.data;
 }
 export const logout = async (userID) => {
     const logoutAPI = `${API_BASE}/logout`
-    const response = await axios.post(logoutAPI, userID)
+    const response = await api.post(logoutAPI, userID)
     return response.data;
 }

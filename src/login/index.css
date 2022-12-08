@@ -1,0 +1,19 @@
+.loginFormContainer {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    padding: 25px;
+    border: solid 3px #7FB069;
+    text-align: center;
+}
+
+.usernameInputStyle {
+    margin-bottom: 5px;
+}
+
+.errorMessage {
+    font-size: 12px;
+    color: #d32f2f;
+}

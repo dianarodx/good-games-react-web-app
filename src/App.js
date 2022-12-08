@@ -5,6 +5,7 @@ import LoginPage from "./login";
 import OtherProfilePage from "./profile/otherProfile";
 import SearchPage from "./search";
 import PersonalProfilePage from "./profile/personalProfile";
+import ProtectedRoute from "./util-components/protectedRoute";
 import {BrowserRouter} from "react-router-dom";
 import {Routes, Route} from "react-router";
 import NavBar from "./util-components/navBar";
@@ -29,7 +30,11 @@ function App() {
                       <Route path="/profile/:uid"
                              element={<OtherProfilePage/>}/>
                       <Route path="/profile"
-                             element={<PersonalProfilePage/>}/>
+                             element={
+                                 <ProtectedRoute>
+                                     <PersonalProfilePage/>
+                                 </ProtectedRoute>
+                             }/>
                       <Route path="/search"
                              element={<SearchPage/>}/>
                       <Route path="/details/:did"

@@ -8,8 +8,8 @@ export const loginThunk = createAsyncThunk(
         await service.login(credentials)
 )
 export const signupThunk = createAsyncThunk(
-    'signup', async (username, password) =>
-        await service.signup(username, password)
+    'signup', async (credentials) =>
+        await service.signup(credentials)
 )
 export const logoutThunk = createAsyncThunk(
     'logout', async (userID) =>

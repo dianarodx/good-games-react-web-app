@@ -7,9 +7,11 @@
     padding: 8px 48px;
     border-radius: 16px;
     margin: 8px 0;
+    width: 200px;
 }
 
 .sm {
+    width: 150px;
     font-size: 12px;
     padding: 6px 36px;
     border-radius: 12px;
@@ -17,6 +19,7 @@
 }
 
 .lg {
+    width: 250px;
     font-size: 20px;
     padding: 10px 60px;
     border-radius: 20px;
