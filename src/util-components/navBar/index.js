@@ -1,13 +1,15 @@
 import {Link} from "react-router-dom";
 import './index.css'
 import {useLocation} from "react-router";
-import {useSelector} from "react-redux";
+import {logoutThunk} from "../../services/auth-thunks";
+import {useDispatch, useSelector} from "react-redux";
 
 const NavBar = () => {
     const activeTab = useLocation().pathname;
     const {currentUser} = useSelector((state) => state.users)
+    const dispatch = useDispatch()
     const logout = () => {
-
+        dispatch(logoutThunk(currentUser))
     }
 
     return (

@@ -1,6 +1,5 @@
 import axios from 'axios';
 const API_BASE = process.env.REACT_APP_API_BASE || 'http://localhost:4000/api';
-console.log(API_BASE);
 const api = axios.create({withCredentials: true})
 
 export const login = async (credentials) => {
@@ -18,8 +17,8 @@ export const profile = async (userID) => {
     const response = await api.post(profileAPI, userID)
     return response.data;
 }
-export const logout = async (userID) => {
+export const logout = async (user) => {
     const logoutAPI = `${API_BASE}/logout`
-    const response = await api.post(logoutAPI, userID)
+    const response = await api.post(logoutAPI, user)
     return response.data;
 }

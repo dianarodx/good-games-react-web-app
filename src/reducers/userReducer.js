@@ -26,7 +26,9 @@ const userSlice = createSlice({
                                           state.currentUser = null
                                           state.signupFailed = true
                                       },
-                                      [logoutThunk.fulfilled]: (state, action) => { },
+                                      [logoutThunk.fulfilled]: (state, action) => {
+                                          state.currentUser = null
+                                      },
                                       [profileThunk.fulfilled]: (state, action) => { }
                                   }
                              });
