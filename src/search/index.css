@@ -1,0 +1,37 @@
+.searchBar {
+    padding-top: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.result {
+    border: 2px solid #7FB069;
+    margin: 20px;
+}
+
+.result-info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 8px;
+}
+
+.result-content {
+    padding: 8px;
+}
+
+.description-container {
+    padding-left: 5px;
+}
+
+.description {
+    margin: 5px;
+}
+
+.img-result {
+    width: 100px;
+    height: 100px;
+    padding-right: 5px;
+}
+
