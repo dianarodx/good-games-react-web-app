@@ -7,6 +7,7 @@ const userSlice = createSlice({
                                       currentUser: null,
                                       loginFailed: false,
                                       signupFailed: false,
+                                      profileInfo: null
                                   },
                                   extraReducers: {
                                       [loginThunk.fulfilled]: (state, action) => {
@@ -28,8 +29,11 @@ const userSlice = createSlice({
                                       },
                                       [logoutThunk.fulfilled]: (state, action) => {
                                           state.currentUser = null
+                                          state.profileInfo = null
                                       },
-                                      [profileThunk.fulfilled]: (state, action) => { }
+                                      [profileThunk.fulfilled]: (state, action) => {
+                                          state.profileInfo = action.payload
+                                      }
                                   }
                              });
 

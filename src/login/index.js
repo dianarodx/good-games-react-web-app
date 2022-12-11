@@ -4,11 +4,14 @@ import {loginThunk, signupThunk} from "../services/auth-thunks";
 import {useDispatch, useSelector} from "react-redux";
 import {Navigate} from "react-router";
 import TextField from '@mui/material/TextField';
+import Checkbox from '@mui/material/Checkbox';
+import FormControlLabel from "@mui/material/FormControlLabel";
 import './index.css'
 
 const LoginPage = () => {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
+    const [isAdmin, setIsAdmin] = useState(false)
     const [loginAttempted, setLoginAttempted] = useState(false)
     const {currentUser, loginFailed, signupFailed} = useSelector((state) => state.users)
     const dispatch = useDispatch()
@@ -17,14 +20,16 @@ const LoginPage = () => {
         if (username === '' || password === '') {
             return
         }
-        dispatch(loginThunk({username, password}))
+        const role = isAdmin ? "ADMIN" : "USER"
+        dispatch(loginThunk({username, password, role}))
     }
     const handleRegister = () => {
         setLoginAttempted(true)
         if (username === '' || password === '') {
             return
         }
-        dispatch(signupThunk({username, password}))
+        const role = isAdmin ? "ADMIN" : "USER"
+        dispatch(signupThunk({username, password, role}))
     }
     if (currentUser) {
         return (
@@ -61,6 +66,10 @@ const LoginPage = () => {
                 <br/>
                 {loginFailed ? <h2 className={'errorMessage'}>Error: Username or Password is Incorrect</h2> : ''}
                 {signupFailed ? <h2 className={'errorMessage'}>Error: Username is already in Use</h2> : ''}
+                <br/>
+                <FormControlLabel control={
+                    <Checkbox checked={isAdmin} onChange={(event) => setIsAdmin(event.target.checked)} />
+                } label={"Admin"}/>
                 <br/>
                 <Button onClick={handleLogin}>Login</Button>
                 <br/>

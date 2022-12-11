@@ -12,9 +12,9 @@ export const signup = async (credentials) => {
     const response = await api.post(signupAPI, credentials)
     return response.data;
 }
-export const profile = async (userID) => {
+export const profile = async (username) => {
     const profileAPI = `${API_BASE}/profile`
-    const response = await api.post(profileAPI, userID)
+    const response = await api.post(profileAPI, username)
     return response.data;
 }
 export const logout = async (user) => {
