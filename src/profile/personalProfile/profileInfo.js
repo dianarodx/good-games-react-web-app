@@ -1,27 +1,26 @@
-import {useDispatch, useSelector} from "react-redux";
+import {useDispatch} from "react-redux";
 import {useState} from "react";
-import {profileThunk, updateProfileThunk} from "../../services/auth-thunks";
+import {updateProfileThunk} from "../../services/auth-thunks";
 import TextField from "@mui/material/TextField";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
 import Button from "../../util-components/button";
 
-const ProfileInfo = () => {
-    const {profileInfo, currentUser} = useSelector((state) => state.users)
+const ProfileInfo = ({profileInfo, usePrivate}) => {
     const dispatch = useDispatch()
-    if (!profileInfo) {
-        dispatch(profileThunk(currentUser.username))
-    }
+    const user = profileInfo.user;
     const [isEditing, setIsEditing] = useState(false)
-    const [firstName, setFirstName] = useState(currentUser.firstName)
-    const [lastName, setLastName] = useState(currentUser.lastName)
-    const [isAdmin, setIsAdmin] = useState(currentUser.role === 'ADMIN')
+    const [firstName, setFirstName] = useState(user.firstName)
+    const [lastName, setLastName] = useState(user.lastName)
+    const [email, setEmail] = useState(user.email)
+    const [isAdmin, setIsAdmin] = useState(user.role === 'ADMIN')
     const submitForm = () => {
         dispatch(updateProfileThunk(
             {
-                ...currentUser,
+                ...user,
                 firstName: firstName,
                 lastName: lastName,
+                email: email,
                 role: isAdmin? 'ADMIN' : 'USER'
             }))
         setIsEditing(false)
@@ -34,7 +33,7 @@ const ProfileInfo = () => {
                 label="Username"
                 variant="filled"
                 size="small"
-                value={profileInfo.username}
+                value={user.username}
                 disabled
             />
             <br/>
@@ -61,6 +60,21 @@ const ProfileInfo = () => {
             />
             <br/>
             <br/>
+            {
+                usePrivate &&
+                <TextField
+                    name="Email"
+                    label="Email"
+                    variant="filled"
+                    size="small"
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    disabled={!isEditing}
+                />
+            }
+            <br/>
+            <br/>
             <FormControlLabel control={
                 <Checkbox
                     checked={isAdmin}
@@ -70,9 +84,13 @@ const ProfileInfo = () => {
             } label={"Admin"}/>
             <br/>
             <br/>
-            {isEditing ?
-             <Button onClick={() => submitForm()} type={'secondary'} size={'sm'}>Save</Button> :
-             <Button onClick={() => setIsEditing(true)} type={'secondary'} size={'sm'}>Edit</Button>}
+            { usePrivate &&
+                (isEditing ?
+                        <Button onClick={() => submitForm()} type={'secondary'}
+                                size={'sm'}>Save</Button> :
+                        <Button onClick={() => setIsEditing(true)} type={'secondary'}
+                                size={'sm'}>Edit</Button>)
+            }
         </>
     )
 }
