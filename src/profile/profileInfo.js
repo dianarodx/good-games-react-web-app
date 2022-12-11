@@ -13,6 +13,7 @@ const ProfileInfo = ({profileInfo, usePrivate}) => {
     const [firstName, setFirstName] = useState(user.firstName)
     const [lastName, setLastName] = useState(user.lastName)
     const [email, setEmail] = useState(user.email)
+    const [bio, setBio] = useState(user.bio)
     const [isAdmin, setIsAdmin] = useState(user.role === 'ADMIN')
     const submitForm = () => {
         dispatch(updateProfileThunk(
@@ -72,6 +73,19 @@ const ProfileInfo = ({profileInfo, usePrivate}) => {
                     disabled={!isEditing}
                 />
             }
+            <br/>
+            <br/>
+            <TextField
+                name="Bio"
+                label="Bio"
+                variant="filled"
+                size="small"
+                type="email"
+                disabled={!isEditing}
+                value={bio}
+                onChange={(e) => setBio(e.target.value)}
+                multiline
+            />
             <br/>
             <br/>
             <FormControlLabel control={

@@ -11,7 +11,7 @@ const FollowingTab = ({username}) => {
     }, [dispatch, username]);
     return (
         <>
-            <h1>Top Followers</h1>
+            <h1>Followers</h1>
             {followers.map((follower) => (
                 <Link to={`/Profile/${follower.username}`} key={follower._id}>{follower.username}</Link>
             ))}

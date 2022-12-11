@@ -2,6 +2,8 @@ import ProfileInfo from "../profileInfo";
 import "./index.css"
 import {useDispatch, useSelector} from "react-redux";
 import {profileThunk} from "../../services/auth-thunks";
+import FollowingTab from "../followingTab";
+import StatTab from "../statTab";
 
 const PersonalProfilePage = () => {
     const {currentUser, profileInfo} = useSelector((state) => state.users)
@@ -17,6 +19,8 @@ const PersonalProfilePage = () => {
                     <ProfileInfo profileInfo={profileInfo} usePrivate={true}/>
                 </div>
             </div>
+            <FollowingTab username={currentUser.username}/>
+            <StatTab username={currentUser.username}/>
         </>
     )
 }
