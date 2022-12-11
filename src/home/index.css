@@ -1,0 +1,43 @@
+.featured {
+    border: 2px solid #7FB069;
+    margin: 20px;
+}
+
+.featured-info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 8px;
+}
+
+.panel-one {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 8px;
+}
+
+.featured-panels {
+    justify-content: center;
+    align-items: center;
+    display: inline-flex;
+    padding: 8px;
+}
+
+.feature-content {
+    padding: 8px;
+}
+
+.feature-container {
+    padding-left: 5px;
+}
+
+.feature-description {
+    margin: 5px;
+}
+
+.featured-img-result {
+    width: 100px;
+    height: 100px;
+    padding-right: 5px;
+}

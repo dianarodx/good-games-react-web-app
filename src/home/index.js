@@ -1,26 +1,94 @@
 import Button from "../util-components/button";
-import React from "react"
+import React, {useEffect, useState} from "react"
 import NavBar from "../util-components/navBar";
+import {useSelector} from "react-redux";
+import './index.css'
+import {Navigate, useParams} from "react-router";
 
 
 const HomePage = () => {
-    return (
-        <div className="App">
-            <h1>Demoing some buttons</h1>
-            <h1>Button Styling</h1>
-            <br/>
-            <Button>Primary Button</Button>
-            <br/>
-            <Button type={'secondary'}>Secondary Button</Button>
-            <h1>Button Sizes</h1>
-            <br/>
-            <Button size={'lg'}>Large Button</Button>
-            <br/>
-            <Button size={'md'}>Medium Button</Button>
-            <br/>
-            <Button size={'sm'}>Small Button</Button>
-        </div>
-    )
+    const {currentUser, profileInfo} = useSelector((state) => state.users)
+    const [error, setError] = useState(null);
+    const [isLoaded, setIsLoaded] = useState(false);
+    const [items, setItems] = useState([]);
+    const [doDetails, setDoDetails] = useState(false);
+    const[detailID, setDetailID] = useState('');
+
+    useEffect(() => {
+        fetch(`https://api.boardgameatlas.com/api/search?min_age=10&order_by=rank&ascending=false&limit=3&client_id=4gFhrrSLjP`)
+            .then(res => res.json())
+            .then(
+                (result) => {
+                    setIsLoaded(true);
+                    setItems(result.games);
+                },
+                (error) => {
+                    setIsLoaded(true);
+                    setError(error);
+                }
+            )
+    }, []);
+
+    function goToDetails(did){
+        setDoDetails(true);
+        setDetailID(did);
+    }
+
+    if (doDetails) {
+        return <Navigate to={`/details/${detailID}`}/>
+    }
+
+    if (currentUser) {
+        return (
+                <div className={"row featured-panels"}>
+            <div className={"col-4"}>
+                <h1 className={"featured-info"}> Featured Games </h1>
+                {items.map((item) => (
+                    <div className={"featured"} key={item.id}>
+                        <div className={"feature-content"}>
+                            <h2>{item.name}</h2>
+                            <div className={"featured-info row"}>
+                                <div className={"col-2"}>
+                                    <img src={item.thumb_url} alt={item.name} className={"featured-img-result"}/>
+                                </div>
+                                <div className={"feature-container"}>
+                                    <span className={"feature-description"}>{item.description_preview}</span>
+                                </div>
+                            </div>
+                            <Button onClick={() => goToDetails(item.id)}>Details</Button>
+                        </div>
+                    </div>
+                ))}
+            </div>
+                <div className={"col-4"}>
+                    <h2> hello world</h2>
+                </div>
+                </div>
+        )
+    }
+    else {
+        return (
+                <div>
+                    <h1 className={"featured-info"}> Featured Games </h1>
+                    {items.map((item) => (
+                        <div className={"featured"} key={item.id}>
+                            <div className={"feature-content"}>
+                                <h2>{item.name}</h2>
+                                <div className={"featured-info row"}>
+                                    <div className={"col-3"}>
+                                        <img src={item.thumb_url} alt={item.name} className={"featured-img-result"}/>
+                                    </div>
+                                    <div className={"feature-container col-6"}>
+                                        <span className={"feature-description"}>{item.description_preview}</span>
+                                    </div>
+                                </div>
+                                <Button onClick={() => goToDetails(item.id)}>Details</Button>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+        )
+    }
 }
 
 export default HomePage
