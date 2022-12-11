@@ -15,21 +15,21 @@ const NavBar = () => {
     return (
         <div className="navbar">
             <ul className="nav-links">
-                <div className={'nav-link ' + (activeTab === '/Home' || activeTab === '/' ? 'active' : '')}>
-                    <Link to={'Home'}>Home</Link>
+                <div className={'nav-link ' + (activeTab === '/home' || activeTab === '/' ? 'active' : '')}>
+                    <Link to={'home'}>Home</Link>
                 </div>
-                <div className={'nav-link ' + (activeTab === '/Search' ? 'active' : '')}>
-                    <Link to={'Search'}>Search</Link>
+                <div className={'nav-link ' + (activeTab === '/search' ? 'active' : '')}>
+                    <Link to={'search'}>Search</Link>
                 </div>
-                <div className={'nav-link ' + (activeTab === '/Profile' ? 'active' : '')}>
-                    <Link to={'Profile'}>My Profile</Link>
+                <div className={'nav-link ' + (activeTab === '/profile' ? 'active' : '')}>
+                    <Link to={'profile'}>My Profile</Link>
                 </div>
                 {currentUser ?
                  <div className={'nav-link'} onClick={logout}>
-                     <Link to={'Home'}>Logout</Link>
+                     <Link to={'home'}>Logout</Link>
                  </div> :
-                 <div className={'nav-link ' + (activeTab === '/Login' ? 'active' : '')}>
-                     <Link to={'Login'}>Login</Link>
+                 <div className={'nav-link ' + (activeTab === '/login' ? 'active' : '')}>
+                     <Link to={'login'}>Login</Link>
                  </div>
                 }
             </ul>
