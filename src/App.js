@@ -13,8 +13,9 @@ import {Provider} from "react-redux";
 import { configureStore }
     from '@reduxjs/toolkit';
 import userReducer from "./reducers/userReducer";
+import followersReducer from "./reducers/followersReducer";
 import SearchResultsPage from "./search/search-results";
-const store = configureStore({ reducer: { users: userReducer } });
+const store = configureStore({ reducer: { users: userReducer, followers: followersReducer} });
 
 function App() {
   return (

@@ -1,10 +1,10 @@
 import {useDispatch} from "react-redux";
 import {useState} from "react";
-import {updateProfileThunk} from "../../services/auth-thunks";
+import {updateProfileThunk} from "../services/auth-thunks";
 import TextField from "@mui/material/TextField";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
-import Button from "../../util-components/button";
+import Button from "../util-components/button";
 
 const ProfileInfo = ({profileInfo, usePrivate}) => {
     const dispatch = useDispatch()
@@ -26,7 +26,6 @@ const ProfileInfo = ({profileInfo, usePrivate}) => {
         setIsEditing(false)
     }
     return (
-        profileInfo === null ? '' :
         <>
             <TextField
                 name="username"
@@ -84,12 +83,12 @@ const ProfileInfo = ({profileInfo, usePrivate}) => {
             } label={"Admin"}/>
             <br/>
             <br/>
-            { usePrivate &&
-                (isEditing ?
-                        <Button onClick={() => submitForm()} type={'secondary'}
-                                size={'sm'}>Save</Button> :
-                        <Button onClick={() => setIsEditing(true)} type={'secondary'}
-                                size={'sm'}>Edit</Button>)
+            {usePrivate &&
+             (isEditing ?
+              <Button onClick={() => submitForm()} type={'secondary'}
+                      size={'sm'}>Save</Button> :
+              <Button onClick={() => setIsEditing(true)} type={'secondary'}
+                      size={'sm'}>Edit</Button>)
             }
         </>
     )
