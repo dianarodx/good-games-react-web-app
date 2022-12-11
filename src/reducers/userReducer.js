@@ -1,5 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
-import {signupThunk, loginThunk, logoutThunk, profileThunk} from "../services/auth-thunks";
+import {
+    signupThunk,
+    loginThunk,
+    logoutThunk,
+    profileThunk,
+    updateProfileThunk
+} from "../services/auth-thunks";
 
 const userSlice = createSlice({
                                   name: "userData",
@@ -33,6 +39,9 @@ const userSlice = createSlice({
                                       },
                                       [profileThunk.fulfilled]: (state, action) => {
                                           state.profileInfo = action.payload
+                                      },
+                                      [updateProfileThunk.fulfilled]: (state, action) => {
+                                          state.currentUser = action.payload.user
                                       }
                                   }
                              });

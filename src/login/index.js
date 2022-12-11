@@ -33,7 +33,7 @@ const LoginPage = () => {
     }
     if (currentUser) {
         return (
-            <Navigate to={'/Profile'}/>
+            <Navigate to={'/profile'}/>
         )
     }
     return (

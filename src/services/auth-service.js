@@ -22,3 +22,8 @@ export const logout = async (user) => {
     const response = await api.post(logoutAPI, user)
     return response.data;
 }
+export const update = async (user) => {
+    const updateAPI = `${API_BASE}/update`
+    const response = await api.post(updateAPI, user)
+    return response.data
+}

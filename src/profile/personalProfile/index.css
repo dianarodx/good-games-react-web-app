@@ -1,0 +1,11 @@
+.alignProfileInfo {
+    padding: 10px;
+    border: solid 2px #7FB069;
+    text-align: center;
+    display: inline-block;
+    margin-top: 10px;
+}
+.outer {
+    width: 100%;
+    text-align: center;
+}

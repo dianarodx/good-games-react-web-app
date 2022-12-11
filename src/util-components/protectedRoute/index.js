@@ -6,7 +6,7 @@ const ProtectedRoute = ({children}) => {
     if (currentUser) {
         return (children)
     }
-    return (<Navigate to={'/Login'}/>)
+    return (<Navigate to={'/login'}/>)
 }
 
 export default ProtectedRoute
