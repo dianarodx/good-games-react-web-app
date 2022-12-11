@@ -1,0 +1,24 @@
+.img-detail {
+    width: 300px;
+    height: 300px;
+}
+
+.detail-info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 8px;
+    flex-direction: column;
+}
+
+.descriptions {
+    margin: 50px;
+    padding: 5px;
+    border: 2px #7FB069 solid;
+}
+
+.title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

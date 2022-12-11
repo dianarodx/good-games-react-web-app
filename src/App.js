@@ -3,7 +3,7 @@ import HomePage from "./home";
 import DetailsPage from "./details";
 import LoginPage from "./login";
 import OtherProfilePage from "./profile/otherProfile";
-import SearchPage from "./search";
+import SearchPage from "./search/search-page";
 import PersonalProfilePage from "./profile/personalProfile";
 import ProtectedRoute from "./util-components/protectedRoute";
 import {BrowserRouter} from "react-router-dom";
@@ -13,6 +13,7 @@ import {Provider} from "react-redux";
 import { configureStore }
     from '@reduxjs/toolkit';
 import userReducer from "./reducers/userReducer";
+import SearchResultsPage from "./search/search-results";
 const store = configureStore({ reducer: { users: userReducer } });
 
 function App() {
@@ -37,6 +38,8 @@ function App() {
                              }/>
                       <Route path="/search"
                              element={<SearchPage/>}/>
+                      <Route path="/results/:query"
+                             element={<SearchResultsPage/>}/>
                       <Route path="/details/:did"
                              element={<DetailsPage/>}/>
                   </Routes>
