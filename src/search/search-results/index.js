@@ -40,22 +40,25 @@ const SearchResultsPage = () => {
         return (
                 <div>
                     {items.map((item) => (
-                        <div className={"result"} key={item.id}>
-                            <div className={"result-content"}>
-                                <h2>{item.name}</h2>
-                                <div className={"result-info row"}>
-                                    <div className={"col-3"}>
-                                        <img src={item.thumb_url} alt={item.name}
-                                             className={"img-result"}/>
+                        <>
+                            <div className={"result"} key={item.id}>
+                                <div className={"result-content"}>
+                                    <h2>{item.name}</h2>
+                                    <div className={"result-info row"}>
+                                        <div className={"col-3"}>
+                                            <img src={item.thumb_url} alt={item.name}
+                                                 className={"img-result"}/>
+                                        </div>
+                                        <div className={"col-6 description-container"}>
+                                            <span
+                                                className={"description"}>{item.description_preview}</span>
+                                        </div>
                                     </div>
-                                    <div className={"col-6 description-container"}>
-                                        <span
-                                            className={"description"}>{item.description_preview}</span>
-                                    </div>
+                                    <Button onClick={() => goToDetails(item.id)}>Details</Button>
                                 </div>
-                                <Button onClick={() => goToDetails(item.id)}>Details</Button>
                             </div>
-                        </div>
+                            <hr/>
+                        </>
                     ))}
             </div>
         );

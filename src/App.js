@@ -15,7 +15,14 @@ import { configureStore }
 import userReducer from "./reducers/userReducer";
 import followersReducer from "./reducers/followersReducer";
 import SearchResultsPage from "./search/search-results";
-const store = configureStore({ reducer: { users: userReducer, followers: followersReducer} });
+import gameReducer from "./reducers/gameReducer";
+const store = configureStore({
+                                 reducer: {
+                                     users: userReducer,
+                                     followers: followersReducer,
+                                     games: gameReducer,
+                                 }
+});
 
 function App() {
   return (

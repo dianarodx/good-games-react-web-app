@@ -1,13 +1,12 @@
 import Button from "../util-components/button";
 import React, {useEffect, useState} from "react"
-import NavBar from "../util-components/navBar";
 import {useSelector} from "react-redux";
 import './index.css'
-import {Navigate, useParams} from "react-router";
+import {Navigate} from "react-router";
 
 
 const HomePage = () => {
-    const {currentUser, profileInfo} = useSelector((state) => state.users)
+    const {currentUser} = useSelector((state) => state.users)
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
     const [items, setItems] = useState([]);
@@ -60,10 +59,7 @@ const HomePage = () => {
                     </div>
                 ))}
             </div>
-                <div className={"col-4"}>
-                    <h2> hello world</h2>
-                </div>
-                </div>
+        </div>
         )
     }
     else {

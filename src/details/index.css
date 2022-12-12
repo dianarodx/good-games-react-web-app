@@ -14,11 +14,21 @@
 .descriptions {
     margin: 50px;
     padding: 5px;
-    border: 2px #7FB069 solid;
 }
 
 .title {
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
+    float: left;
+    margin: 10px;
+}
+.rating {
+    display: flex;
+    align-items: flex-end;
+    margin: 10px;
+    float: right;
+}
+.reviewForm {
+    margin: 25px;
 }
