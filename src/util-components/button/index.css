@@ -35,3 +35,8 @@
     background-color: #9AA8EF;
     color: black;
 }
+
+.disabled {
+    background-color: lightgray;
+    cursor: default;
+}

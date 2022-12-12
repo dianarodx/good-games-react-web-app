@@ -11,6 +11,8 @@ const ReviewForm = ({gameID}) => {
     const [rating, setRating] = useState(0)
     const [loginRequired, setLoginRequired] = useState(false)
     const {currentUser} = useSelector((state) => state.users)
+    const {reviews} = useSelector((state) => state.games)
+    const hasReview = currentUser && reviews.some(e => e.username === currentUser.username)
     const dispatch = useDispatch()
     const submitReview = () => {
         if (currentUser) {
@@ -33,6 +35,7 @@ const ReviewForm = ({gameID}) => {
                 onChange={(event, newValue) => {
                     setRating(newValue);
                 }}
+                disabled={hasReview}
             />
             <Typography>Review:</Typography>
             <TextField
@@ -42,8 +45,9 @@ const ReviewForm = ({gameID}) => {
                 onChange={(e) => setReview(e.target.value)}
                 rows={4}
                 fullWidth
+                disabled={hasReview}
             />
-            <Button size={'sm'} onClick={submitReview}>Add Review</Button>
+            <Button size={'sm'} onClick={submitReview} disabled={hasReview}>Add Review</Button>
         </div>
     )
 }

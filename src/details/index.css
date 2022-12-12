@@ -32,3 +32,6 @@
 .reviewForm {
     margin: 25px;
 }
+.containerClass {
+    max-width: none;
+}

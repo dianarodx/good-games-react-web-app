@@ -28,8 +28,7 @@ function App() {
   return (
       <BrowserRouter>
           <Provider store={store}>
-              <NavBar/>
-              <div className="container">
+                  <NavBar/>
                   <Routes>
                       <Route path="/*"
                              index
@@ -51,7 +50,6 @@ function App() {
                       <Route path="/details/:did"
                              element={<DetailsPage/>}/>
                   </Routes>
-              </div>
           </Provider>
       </BrowserRouter>
   );

@@ -14,7 +14,6 @@ const DetailsPage = () => {
     const [isLoaded, setIsLoaded] = useState(false);
     const [item, setItem] = useState([]);
     const dispatch = useDispatch()
-
     useEffect(() => {
         fetch(`https://api.boardgameatlas.com/api/search?ids=${did}&client_id=4gFhrrSLjP`)
             .then(res => res.json())
