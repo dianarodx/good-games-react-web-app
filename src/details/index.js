@@ -3,6 +3,7 @@ import {useEffect, useState} from "react";
 import './index.css'
 import {useDispatch, useSelector} from "react-redux";
 import {getReviewsThunk, getRatingThunk} from '../services/game-thunks'
+import {addDetailsThunk} from '../services/details-thunks'
 import Reviews from "./reviews";
 import ReviewForm from './reviewForm'
 import {Rating, Typography} from "@mui/material";
@@ -10,6 +11,7 @@ import {Rating, Typography} from "@mui/material";
 const DetailsPage = () => {
     const {did} = useParams()
     const {reviews, rating} = useSelector((state) => state.games)
+    const {currentUser} = useSelector((state) => state.users)
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
     const [item, setItem] = useState([]);
@@ -31,7 +33,10 @@ const DetailsPage = () => {
             )
         dispatch(getRatingThunk(did))
         dispatch(getReviewsThunk(did))
-    }, [did, dispatch]);
+        if (currentUser) {
+            dispatch(addDetailsThunk({username: currentUser.username, gameID: did}))
+        }
+    }, [did, dispatch, currentUser]);
     if (error) {
         return <div>Error: {error.message}</div>;
     } else if (!isLoaded) {

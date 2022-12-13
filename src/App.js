@@ -16,11 +16,13 @@ import userReducer from "./reducers/userReducer";
 import followersReducer from "./reducers/followersReducer";
 import SearchResultsPage from "./search/search-results";
 import gameReducer from "./reducers/gameReducer";
+import detailsReducer from "./reducers/detailsReducer";
 const store = configureStore({
                                  reducer: {
                                      users: userReducer,
                                      followers: followersReducer,
                                      games: gameReducer,
+                                     details: detailsReducer,
                                  }
 });
 
