@@ -24,7 +24,7 @@ const SearchResultsPage = () => {
                     }
                 )
         }, [query]);
-
+    console.log(items)
     function goToDetails(did){
         setDoDetails(true);
         setDetailID(did);
@@ -50,8 +50,7 @@ const SearchResultsPage = () => {
                                                  className={"img-result"}/>
                                         </div>
                                         <div className={"col-6 description-container"}>
-                                            <span
-                                                className={"description"}>{item.description_preview}</span>
+                                            <span className={"description"}>{item.description_preview}</span>
                                         </div>
                                     </div>
                                     <Button onClick={() => goToDetails(item.id)}>Details</Button>

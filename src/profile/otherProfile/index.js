@@ -7,6 +7,9 @@ import {addFollowerThunk, removeFollowerThunk} from "../../services/followers-th
 import Button from "../../util-components/button";
 import {useEffect, useState} from "react";
 import StatTab from "../statTab";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 
 const OtherProfilePage = () => {
     const {username} = useParams()
@@ -43,18 +46,25 @@ const OtherProfilePage = () => {
         return <Navigate to={'/profile'}/>
     }
     return (
-        <div className={'outer'}>
-            <div className={'alignProfileInfo'}>
-                <ProfileInfo profileInfo={profileInfo} usePrivate={false}/>
-            </div>
-            {
-                followingUser ? <Button type={'secondary'} onClick={(_) => unfollowUser()}>Unfollow</Button>
-                              : <Button type={'secondary'} onClick={(_) => followUser()}>Follow</Button>
-            }
-
-            <FollowingTab username={username}/>
-            <StatTab username={username}/>
-        </div>
+        <Container className={'outer'}>
+            <Row>
+                <Col>
+                    <StatTab username={username}/>
+                </Col>
+                <Col>
+                    <div className={'alignProfileInfo'}>
+                        <ProfileInfo profileInfo={profileInfo} usePrivate={false}/>
+                    </div>
+                </Col>
+                <Col>
+                    {
+                        followingUser ? <Button type={'secondary'} onClick={(_) => unfollowUser()}>Unfollow</Button>
+                                      : <Button type={'secondary'} onClick={(_) => followUser()}>Follow</Button>
+                    }
+                    <FollowingTab username={username}/>
+                </Col>
+            </Row>
+        </Container>
     )
 }
 

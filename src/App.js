@@ -16,11 +16,13 @@ import userReducer from "./reducers/userReducer";
 import followersReducer from "./reducers/followersReducer";
 import SearchResultsPage from "./search/search-results";
 import gameReducer from "./reducers/gameReducer";
+import detailsReducer from "./reducers/detailsReducer";
 const store = configureStore({
                                  reducer: {
                                      users: userReducer,
                                      followers: followersReducer,
                                      games: gameReducer,
+                                     details: detailsReducer,
                                  }
 });
 
@@ -28,8 +30,7 @@ function App() {
   return (
       <BrowserRouter>
           <Provider store={store}>
-              <NavBar/>
-              <div className="container">
+                  <NavBar/>
                   <Routes>
                       <Route path="/*"
                              index
@@ -51,7 +52,6 @@ function App() {
                       <Route path="/details/:did"
                              element={<DetailsPage/>}/>
                   </Routes>
-              </div>
           </Provider>
       </BrowserRouter>
   );
